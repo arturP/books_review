@@ -18,24 +18,21 @@ WHEN the project is running, you can make HTTP requests to the exposed endpoints
 
 ## API Endpoints
 
-- `POST /register`: Register a new user.
-- `POST /login`: Log in a user.
-- `POST /logout/:userId`: Log out a user.
-- `GET /users/:userId`: Retrieve user details.
-- `POST /search`: Search for a mentor by expertise.
-- `POST /book/:menteeId`: Create a booking for a mentee.
-- `GET /bookings/:bookingId`: Retrieve a booking by its ID.
-- `GET /users/:userId/bookings`: Retrieve bookings associated with a specific user.
-- `PATCH /users/:userId/bookings/:bookingId/reschedule`: Reschedule a booking by a user.
-- `PATCH /users/:userId/bookings/:bookingId/cancel`: Cancel a booking by a user.
-- `PATCH /users/:userId/bookings/:bookingId/accept`: Accept a booking by a mentor.
-- `PATCH /users/:userId/bookings/:bookingId/reject`: Reject a booking by a mentor.
+- `POST /book`: Creates a new book.
+- `GET /books`: Retrieve all books.
+- `GET /books/:id`: Retrieve book (indicated by id) details.
+- `PUT /books/:id`: Updates book (indicated by id) details.
+- `DELETE /books/:id`: Removes book.
+- `POST /review`: Creates a new review for a book.
+- `GET /reviews`: Retrieve all reviews.
+- `GET /reviews/:id`: Retrieve review (indicated by id) details.
+- `PUT /reviews/:id`: Updates review (indicated by id) details.
+- `DELETE /reviews/:id`: Removes review.
 
 ## Example
 
 Request:
-    `curl -X http://<CANISTER_ID>.localhost:8000/register -H 'Accept: application/json -d '{"username": "John", "password": "john1234", "role": "mentor", "expertise": "ICP"}'`
+    `curl -X http://<CANISTER_ID>.localhost:8000/book -H 'Accept: application/json -d '{"author" : "George Orwell", "title": "1984", "description": "Published in 1949, the book offers political satirist George Orwell's nightmarish vision of a totalitarian..."}'`
 
 Response:
-    `{"message": "User registered successfully", "user": {"id": "fa42cef2-5062-4c4c-9b18-e720213ce19b", "role": "mentor", "expertise": "ICP", "username": "John", "password": "john1234", createdAt: "2024-04-03:00:00...", "updatedAt": "null"}}`
-
+    `{"id": "4295fb17-a5a6-4ee0-bf8f-4e0dcc7317f3","author" : "George Orwell", "title": "1984", "description": "Published in 1949, the book offers political satirist George Orwell's nightmarish vision of a totalitarian..."}`
