@@ -88,6 +88,7 @@ const reviewsStorage = StableBTreeMap<string, Review>(0);
  */
 const booksStorage = StableBTreeMap<string, Book>(1);
 
+const CREATED = 201;
 const BAD_REQUEST = 400;
 const NOT_FOUND = 404;
 const INTERNAL_SERVER_ERROR = 500;
@@ -107,7 +108,7 @@ export default Server(() => {
         const { author, title, description } = req.body;
         const book: Book = { id: uuidv4(), author, title, description, createdAt: Date.now(), updatedAt: Date.now() };
         booksStorage.insert(book.id, book);
-        res.status(201).json(book);
+        res.status(CREATED).json(book);
     });
 
     app.get("/books", (req, res) => {
@@ -181,7 +182,7 @@ export default Server(() => {
         const reviewId = uuidv4();
         const reviewObj: Review = { id: reviewId, bookId, review, rating, createdAt: Date.now(), updatedAt: Date.now() };
         reviewsStorage.insert(reviewId, reviewObj);
-        res.status(201).json(reviewObj);
+        res.status(CREATED).json(reviewObj);
     });
 
     app.get("/reviews", (req, res) => {
