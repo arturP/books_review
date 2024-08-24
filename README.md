@@ -1,6 +1,6 @@
 # books_review
 
-This is a server that manages books reviews. User can create, update, delete and view reviews of books in a system.
+This is a server that manages books reviews and it uses ICP (Internet Computer) infrastructure. User can create, update, delete and view reviews of books in a system.
 
 User management is not implemented here.
 
